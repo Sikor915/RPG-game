@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"pl.polsl.lab1.kacper.sikorski.myfirstmvp"},{"l":"pl.polsl.lab1.kacper.sikorski.myfirstmvp.controller"},{"l":"pl.polsl.lab1.kacper.sikorski.myfirstmvp.exceptions"},{"l":"pl.polsl.lab1.kacper.sikorski.myfirstmvp.model"},{"l":"pl.polsl.lab1.kacper.sikorski.myfirstmvp.view"}];updateSearchResults();
