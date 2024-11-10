@@ -10,6 +10,7 @@ import pl.polsl.lab1.kacper.sikorski.myfirstmvp.exceptions.InvalidNameException;
  * The GUI class for the MyFirstMVP application. This class initializes and
  * manages the graphical user interface.
  *
+ * @author Kacper Sikorski
  * @version 1.0
  */
 public class GUI {
@@ -85,7 +86,7 @@ public class GUI {
                 if (name.isEmpty() || name.length() < 3 || name.length() > 10) {
                     throw new InvalidNameException("ERROR: Name should be between 3 to 10 characters long.");
                 }
-                game.gameRun(name);
+                game.gameRun(name); // <---------------- THIS RUNS THE GAME
             } catch (InvalidNameException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Invalid Name", JOptionPane.ERROR_MESSAGE);
             }

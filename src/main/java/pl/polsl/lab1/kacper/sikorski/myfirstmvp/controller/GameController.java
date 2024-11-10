@@ -33,11 +33,6 @@ public class GameController {
     private Player player;
 
     /**
-     * Scanner object to read input from the console
-     */
-    private Scanner scanner;
-
-    /**
      * Indicates whether the game is currently running
      */
     private boolean gameRunning;
@@ -48,6 +43,8 @@ public class GameController {
      */
     private FightController fightController;
 
+    private GameWindow gameWindow;
+
     /**
      * Constructs a GameController object. Initializes the controller for
      * managing the game input/output operations. It also initializes the
@@ -55,46 +52,8 @@ public class GameController {
      * an empty string.
      */
     public GameController() {
-        scanner = new Scanner(System.in);
         playerName = "";
-    }
-
-    /**
-     * Runs the game by prompting the user for their name. This method ensures
-     * that the name is valid, i.e., it must be between 3 and 10 characters. If
-     * the player enters an invalid name, an exception is thrown and handled,
-     * and the prompt is repeated. If the name is valid, the game will start.
-     */
-    public void gameRun() {
-        System.out.println("Hello and welcome!");
-
-        boolean isValidName = false;
-
-        while (!isValidName) {
-            System.out.println("Please enter your name: ");
-
-            playerName = scanner.next();
-
-            try {
-                if (playerName.isEmpty() || playerName.length() < 3) {
-                    throw new InvalidNameException("Player name must be at least 3 characters long.");
-                } else if (playerName.length() > 10) {
-                    throw new InvalidNameException("Player name is too long, character limit is 10");
-                }
-                isValidName = true;
-
-            } catch (InvalidNameException e) {
-                System.out.println("Error: " + e.getMessage());
-            }
-        }
-
-        player = new Player(100, playerName, "Player");
-        ioController = new IOController(player);
-
-        ioController.displayPlayer();
-        ioController.displayInventory();
-
-        gameStarted();
+        this.gameWindow = new GameWindow(this);
     }
 
     /**
@@ -115,16 +74,10 @@ public class GameController {
             }
 
             player = new Player(100, playerName, "Player");
-
             ioController = new IOController(player);
-
-            ioController.displayPlayer();
-            ioController.displayInventory();
-
             gameStarted();
         } catch (InvalidNameException e) {
             System.out.println("Error: " + e.getMessage());
-            gameRun();
         }
     }
 
@@ -136,32 +89,15 @@ public class GameController {
      */
     public void gameStarted() {
         gameRunning = true;
-        fightController = new FightController();
+        gameWindow.initializeUI();
+        fightController = new FightController(gameWindow);
+    }
 
-        while (gameRunning) {
-            System.out.println("1. View Player\n2. Fight Enemy\n3. Exit");
-            int choice = scanner.nextInt();
+    public FightController getFightController() {
+        return fightController;
+    }
 
-            switch (choice) {
-                case 1:
-                    ioController.displayPlayer();
-                    ioController.displayInventory();
-                    break;
-                case 2:
-                    fightController.startFight(player);
-                    break;
-                case 3:
-                    gameRunning = false;
-                    System.out.println("Exiting game...");
-                    break;
-                default:
-                    System.out.println("Invalid option, please choose again.");
-            }
-
-            if (player.getHealth() <= 0) {
-                gameRunning = false;
-                break;
-            }
-        }
+    public Player getPlayer() {
+        return player;
     }
 }
