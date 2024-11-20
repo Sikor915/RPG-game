@@ -65,27 +65,17 @@ public class GameController {
      * @param name The name of the player passed as an argument
      */
     public void gameRun(String name) {
-        try {
-            playerName = name;
-            if (playerName.isEmpty() || playerName.length() < 3) {
-                throw new InvalidNameException("Player name must be at least 3 characters long.");
-            } else if (playerName.length() > 10) {
-                throw new InvalidNameException("Player name is too long, character limit is 10");
-            }
 
-            player = new Player(100, playerName, "Player");
-            ioController = new IOController(player);
-            gameStarted();
-        } catch (InvalidNameException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
+        playerName = name;
+        player = new Player(100, playerName, "Player");
+        ioController = new IOController(player);
+        gameStarted();
+
     }
 
     /**
      * Handles the main game loop once the game has started. The method
-     * continuously prompts the player with choices to view their player info,
-     * fight an enemy, or exit the game. The loop runs until the player chooses
-     * to exit or dies.
+     * initializes the game window and fight controller. to exit or dies.
      */
     public void gameStarted() {
         gameRunning = true;

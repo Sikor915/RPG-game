@@ -17,11 +17,11 @@ public class MyFirstMVP {
 
     /**
      * The method supports two cases: 1. If no arguments are passed, the game
-     * will default to empty argument (""). 2. If arguments are
-     * passed, the first argument (args[0]) will be treated as the player's name.
+     * will default to empty argument (""). 2. If arguments are passed, the
+     * first argument (args[0]) will be treated as the player's name.
      *
-     * @param args Arguments for main function 
-     *        args[0] (optional) - the name of the player.
+     * @param args Arguments for main function args[0] (optional) - the name of
+     * the player.
      */
     public static void main(String[] args) {
         String name = args.length > 0 ? args[0] : "";

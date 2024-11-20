@@ -23,12 +23,4 @@ public class WeaponDisplayInfo {
     public WeaponDisplayInfo() {
         weapon = new Weapon("Shortsword", 1, "Melee", 15);
     }
-
-    /**
-     * Displays the details of the weapon to the console. The output includes
-     * the weapon's name, type, damage, and quantity.
-     */
-    public void displayWeapon() {
-        System.out.println("Name: " + weapon.getName() + ", Type: " + weapon.getType() + ", Damage: " + weapon.getDamage() + ", Quantity: " + weapon.getQuantity());
-    }
 }

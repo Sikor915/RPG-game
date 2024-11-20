@@ -46,13 +46,19 @@ public class Inventory {
         for (Item i : items) {
             if (i.getName().equals(item.getName())) {
                 i.addQuantity(item.getQuantity());
-                itemExists = true;
+                if (i.getQuantity() > 0) {
+                    itemExists = true;
+                } else {
+                    removeItem(i);
+                }
                 break;
             }
         }
 
         if (!itemExists) {
-            items.add(item);
+            if (item.getQuantity() > 0) {
+                items.add(item);
+            }
         }
     }
 

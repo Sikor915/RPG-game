@@ -15,4 +15,3 @@ pl\polsl\lab1\kacper\sikorski\myfirstmvp\model\Enemy.class
 pl\polsl\lab1\kacper\sikorski\myfirstmvp\model\Item.class
 pl\polsl\lab1\kacper\sikorski\myfirstmvp\view\WeaponDisplayInfo.class
 pl\polsl\lab1\kacper\sikorski\myfirstmvp\exceptions\InvalidNameException.class
-pl\polsl\lab1\kacper\sikorski\myfirstmvp\view\PlayerDisplay.class

@@ -36,6 +36,16 @@ public class Player extends Entity {
 
         Item item = new Item("Health Potion", 2);
         playerInventory.addItem(item);
+        Item devItem = new Item("DEV ITEM", 124);
+        playerInventory.addItem(devItem);
+        Item devItem2 = new Item("DEV ITEM2", -124);
+        playerInventory.addItem(devItem2);
+        Item devItem3 = new Item("DEV ITEM3", 124444);
+        playerInventory.addItem(devItem3);
+        Item devItem4 = new Item("DEV ITEM4", 0);
+        playerInventory.addItem(devItem4);
+        Item devItem5 = new Item("DEV ITEM5", 69);
+        playerInventory.addItem(devItem5);
     }
 
     /**
