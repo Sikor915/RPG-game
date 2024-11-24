@@ -39,6 +39,9 @@ public class FightController {
      * Constructor to initialize the FightController with necessary components.
      * It sets up the view for displaying the fight and initializes the random
      * generator and enemy spawner.
+     *
+     * @param gameWindow The GameWindow for displaying and handling
+     * interactions.
      */
     public FightController(GameWindow gameWindow) {
         this.gameWindow = gameWindow;
@@ -56,33 +59,55 @@ public class FightController {
     public void startFight(Player player) {
         Enemy enemy = enemySpawner.spawnRandomEnemy();
 
-        // Display initial enemy information on GameWindow
+        // Notify the GameWindow to display enemy information
         gameWindow.updateEnemyInfo(enemy.getName(), enemy.getHealth());
-
-        // Choose the player's weapon (for simplicity, using the first weapon)
-        chosenWeapon = player.getWeapons().get(0);
-        int playerAttack = chosenWeapon.getDamage();
-
-        // Combat loop
+        
+        Weapon chosenWeapon = player.getWeapons().get(0);
+        
         while (player.getHealth() > 0 && enemy.getHealth() > 0) {
-            int enemyAttack = random.nextInt(15) + 1;
+            
+            gameWindow.displayBattleOptions();
 
-            // Apply damage to enemy and player
-            enemy.setHealth(enemy.getHealth() - playerAttack);
-            player.setHealth(player.getHealth() - enemyAttack);
-
-            // Update GUI after each turn
-            gameWindow.updatePlayerHealth();
-            gameWindow.updateEnemyInfo(enemy.getName(), enemy.getHealth());
-
-            // Display outcome after battle
-            if (enemy.getHealth() <= 0 && player.getHealth() > 0) {
-                gameWindow.displayBattleResult("Victory", enemy.getReward());
-                Item gold = new Item("Gold", enemy.getReward());
-                player.getPlayerInventory().addItem(gold);
-                break;
+            // Get player's action from the GUI
+            String action = gameWindow.getPlayerAction();
+            
+            if ("Attack".equals(action)) {
+                // Attack logic
+                enemy.setHealth(enemy.getHealth() - chosenWeapon.getDamage());
+                gameWindow.setPlayerAction("");
+            } else if ("Use Item".equals(action)) {
+                
+                boolean itemUsed = player.getPlayerInventory().useHealingItem(player);
+                if (itemUsed) {
+                    gameWindow.displayMessage("You used a Healing Potion and restored 20 health");
+                    gameWindow.updatePlayerHealth();
+                } else {
+                    gameWindow.displayMessage("You don't have any Healing Potions!");
+                }
+                gameWindow.setPlayerAction("");
+            }
+            
+            if (enemy.getHealth() > 0) {
+                int enemyAttack = random.nextInt(15) + 1;
+                player.setHealth(player.getHealth() - enemyAttack);
             }
 
+            // Update GameWindow after each turn
+            gameWindow.updatePlayerHealth();
+            gameWindow.updateEnemyInfo(enemy.getName(), enemy.getHealth());
+            
+            if (enemy.getHealth() <= 0) {
+                gameWindow.displayBattleResult("Victory", enemy.getReward());
+                player.getPlayerInventory().addItem(new Item("Gold", enemy.getReward()));
+                int potionDrop = random.nextInt(20) + 1;
+                int potionCount = random.nextInt(3) + 1;
+                if (potionDrop >= 8) {
+                    player.getPlayerInventory().addItem(new Item("Healing Potion", potionCount));
+                    gameWindow.displayMessage("You have acquired " + potionCount + " healing potions.");
+                }
+                break;
+            }
+            
             if (player.getHealth() <= 0) {
                 gameWindow.displayBattleResult("Defeat", 0);
                 break;

@@ -5,7 +5,6 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import pl.polsl.lab1.kacper.sikorski.myfirstmvp.controller.GameController;
-import pl.polsl.lab1.kacper.sikorski.myfirstmvp.model.Player;
 
 /**
  * The GameWindow class represents the main game GUI that displays player
@@ -42,6 +41,13 @@ public class GameWindow extends JFrame {
     private JButton viewInventoryButton;
     private JButton startFightButton;
     private JButton exitGameButton;
+
+    /**
+     * Buttons and string to enable user input for attacking and using items.
+     */
+    private JButton attackButton;
+    private JButton useItemButton;
+    private String playerAction;
 
     /**
      * Constructs the GameWindow and initializes the UI components.
@@ -88,6 +94,10 @@ public class GameWindow extends JFrame {
         viewInventoryButton = new JButton("View Inventory");
         startFightButton = new JButton("Start Fight");
         exitGameButton = new JButton("Exit Game");
+
+        // Create buttons and dialog box for combat
+        attackButton = new JButton("Attack");
+        useItemButton = new JButton("Use Item");
 
         // Set actions for the buttons
         viewInventoryButton.addActionListener(e -> showInventoryWindow());
@@ -219,5 +229,60 @@ public class GameWindow extends JFrame {
      */
     public JButton getExitGameButton() {
         return exitGameButton;
+    }
+
+    /**
+     * Returns the player's chosen action during a fight.
+     *
+     * @return the chosen action ("Attack" or "Use Item").
+     */
+    public String getPlayerAction() {
+        return playerAction;
+    }
+
+    /**
+     * Sets the player's chosen action during a fight.
+     *
+     * @param string Text which playerAction will be set to.
+     */
+    public void setPlayerAction(String string) {
+        playerAction = string;
+    }
+
+    /**
+     * Displays the combat options.
+     */
+    public void displayBattleOptions() {
+
+        JDialog battleDialog = new JDialog(this, "Choose your action", true);
+        battleDialog.setLayout(new BoxLayout(battleDialog.getContentPane(), BoxLayout.Y_AXIS));
+
+        attackButton.addActionListener(e -> {
+            playerAction = "Attack";
+            battleDialog.dispose();
+        });
+
+        useItemButton.addActionListener(e -> {
+            playerAction = "Use Item";
+            battleDialog.dispose();
+        });
+
+        // Add buttons to the dialog
+        battleDialog.add(attackButton);
+        battleDialog.add(useItemButton);
+
+        // Display the dialog
+        battleDialog.pack();
+        battleDialog.setLocationRelativeTo(this);
+        battleDialog.setVisible(true);
+    }
+
+    /**
+     * Displays a message to the player during combat.
+     *
+     * @param message The message to display.
+     */
+    public void displayMessage(String message) {
+        JOptionPane.showMessageDialog(this, message, "Combat Info", JOptionPane.INFORMATION_MESSAGE);
     }
 }

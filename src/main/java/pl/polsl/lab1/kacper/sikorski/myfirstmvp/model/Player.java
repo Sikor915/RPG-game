@@ -34,7 +34,7 @@ public class Player extends Entity {
         Weapon shortsword = new Weapon("Shortsword", 1, "Melee", 15);
         weapons.add(shortsword);
 
-        Item item = new Item("Health Potion", 2);
+        Item item = new Item("Healing Potion", 2);
         playerInventory.addItem(item);
         Item devItem = new Item("DEV ITEM", 124);
         playerInventory.addItem(devItem);

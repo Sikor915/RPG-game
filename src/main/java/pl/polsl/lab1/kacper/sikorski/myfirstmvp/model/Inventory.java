@@ -1,6 +1,7 @@
 package pl.polsl.lab1.kacper.sikorski.myfirstmvp.model;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 /**
  * The Inventory class represents the player's collection of items in the game.
@@ -87,5 +88,38 @@ public class Inventory {
             }
         }
         return null;
+    }
+
+    /**
+     * Uses a healing item from the inventory to restore player health.
+     *
+     * @param player The player using the item.
+     * @return True if an item was successfully used; false otherwise.
+     */
+    public boolean useHealingItem(Player player) {
+        // Find a healing item in the inventory
+        Optional<Item> healingItem = items.stream()
+                .filter(item -> "Healing Potion".equalsIgnoreCase(item.getName()))
+                .findFirst();
+
+        if (healingItem.isPresent()) {
+            Item item = healingItem.get();
+            int healingAmount = 20;
+            player.setHealth(player.getHealth() + healingAmount);
+
+            if (player.getHealth() >= 100) {
+                player.setHealth(100);
+            }
+
+            // Reduce item quantity
+            item.setQuantity(item.getQuantity() - 1);
+            if (item.getQuantity() <= 0) {
+                items.remove(item);
+            }
+
+            return true;
+        }
+
+        return false; // No healing items found
     }
 }
