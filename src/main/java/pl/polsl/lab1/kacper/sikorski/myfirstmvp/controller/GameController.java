@@ -1,9 +1,8 @@
 package pl.polsl.lab1.kacper.sikorski.myfirstmvp.controller;
 
-import java.util.Scanner;
 import pl.polsl.lab1.kacper.sikorski.myfirstmvp.view.*;
 import pl.polsl.lab1.kacper.sikorski.myfirstmvp.model.*;
-import pl.polsl.lab1.kacper.sikorski.myfirstmvp.exceptions.InvalidNameException;
+import lombok.*;
 
 /**
  * GameController class that handles game flow logic. It manages the player's
@@ -15,12 +14,9 @@ import pl.polsl.lab1.kacper.sikorski.myfirstmvp.exceptions.InvalidNameException;
  * @author Kacper Sikorski
  * @version 1.0
  */
+@Getter
+@Setter
 public class GameController {
-
-    /**
-     * Controller responsible for managing input/output operations
-     */
-    private IOController ioController;
 
     /**
      * The name of the player
@@ -33,16 +29,14 @@ public class GameController {
     private Player player;
 
     /**
-     * Indicates whether the game is currently running
-     */
-    private boolean gameRunning;
-
-    /**
      * Controller responsible for handling the combat logic between the player
      * and enemies.
      */
     private FightController fightController;
 
+    /**
+     * Game window in which the game will be played.
+     */
     private GameWindow gameWindow;
 
     /**
@@ -68,9 +62,7 @@ public class GameController {
 
         playerName = name;
         player = new Player(100, playerName, "Player");
-        ioController = new IOController(player);
         gameStarted();
-
     }
 
     /**
@@ -78,15 +70,24 @@ public class GameController {
      * initializes the game window and fight controller. to exit or dies.
      */
     public void gameStarted() {
-        gameRunning = true;
         gameWindow.initializeUI();
         fightController = new FightController(gameWindow);
     }
 
+    /**
+     * Returns the fight controller
+     *
+     * @return Fight controller
+     */
     public FightController getFightController() {
         return fightController;
     }
 
+    /**
+     * Return the player that is playing
+     *
+     * @return Current player.
+     */
     public Player getPlayer() {
         return player;
     }

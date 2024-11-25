@@ -11,4 +11,13 @@
         <maven.compiler.target>19</maven.compiler.target>
         <exec.mainClass>pl.polsl.lab1.kacper.sikorski.myfirstmvp.MyFirstMVP</exec.mainClass>
     </properties>
+    <dependencies>
+ <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+ 	<dependency>
+ 		<groupId>org.projectlombok</groupId>
+ 		<artifactId>lombok</artifactId>
+ 		<version>1.18.36</version>
+ 		<scope>provided</scope>
+ 	</dependency>
+ </dependencies>
 </project>

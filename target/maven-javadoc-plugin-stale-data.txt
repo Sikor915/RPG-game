@@ -1,0 +1,54 @@
+-J-Duser.language=
+-J-Duser.country=
+@options
+@packages
+-encoding
+'UTF-8'
+-protected
+-source
+'19'
+-sourcepath
+'C:/Users/sikor/OneDrive/Dokumenty/NetBeansProjects/MyFirstMVP/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2024. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/sikor/OneDrive/Dokumenty/NetBeansProjects/MyFirstMVP/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'MyFirstMVP 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'MyFirstMVP 1.0-SNAPSHOT API'
+pl.polsl.lab1.kacper.sikorski.myfirstmvp.controller
+pl.polsl.lab1.kacper.sikorski.myfirstmvp.exceptions
+pl.polsl.lab1.kacper.sikorski.myfirstmvp.model
+pl.polsl.lab1.kacper.sikorski.myfirstmvp
+pl.polsl.lab1.kacper.sikorski.myfirstmvp.view
+C:\Users\sikor\OneDrive\Dokumenty\NetBeansProjects\MyFirstMVP\src\main\java = 1728906507876
+C:\Users\sikor\OneDrive\Dokumenty\NetBeansProjects\MyFirstMVP\target\reports\apidocs\allclasses-index.html = 1732533512285
+C:\Users\sikor\OneDrive\Dokumenty\NetBeansProjects\MyFirstMVP\target\reports\apidocs\allpackages-index.html = 1732533512290
+C:\Users\sikor\OneDrive\Dokumenty\NetBeansProjects\MyFirstMVP\target\reports\apidocs\constant-values.html = 1732533512077
+C:\Users\sikor\OneDrive\Dokumenty\NetBeansProjects\MyFirstMVP\target\reports\apidocs\copy.svg = 1732533512366
+C:\Users\sikor\OneDrive\Dokumenty\NetBeansProjects\MyFirstMVP\target\reports\apidocs\element-list = 1732533511974
+C:\Users\sikor\OneDrive\Dokumenty\NetBeansProjects\MyFirstMVP\target\reports\apidocs\help-doc.html = 1732533512354
+C:\Users\sikor\OneDrive\Dokumenty\NetBeansProjects\MyFirstMVP\target\reports\apidocs\index-all.html = 1732533512337
+C:\Users\sikor\OneDrive\Dokumenty\NetBeansProjects\MyFirstMVP\target\reports\apidocs\index.html = 1732533512252
+C:\Users\sikor\OneDrive\Dokumenty\NetBeansProjects\MyFirstMVP\target\reports\apidocs\jquery-ui.overrides.css = 1732533512404
+C:\Users\sikor\OneDrive\Dokumenty\NetBeansProjects\MyFirstMVP\target\reports\apidocs\member-search-index.js = 1732533512303
+C:\Users\sikor\OneDrive\Dokumenty\NetBeansProjects\MyFirstMVP\target\reports\apidocs\module-search-index.js = 1732533512293
+C:\Users\sikor\OneDrive\Dokumenty\NetBeansProjects\MyFirstMVP\target\reports\apidocs\overview-summary.html = 1732533512347
+C:\Users\sikor\OneDrive\Dokumenty\NetBeansProjects\MyFirstMVP\target\reports\apidocs\overview-tree.html = 1732533512246
+C:\Users\sikor\OneDrive\Dokumenty\NetBeansProjects\MyFirstMVP\target\reports\apidocs\package-search-index.js = 1732533512297
+C:\Users\sikor\OneDrive\Dokumenty\NetBeansProjects\MyFirstMVP\target\reports\apidocs\script.js = 1732533512363
+C:\Users\sikor\OneDrive\Dokumenty\NetBeansProjects\MyFirstMVP\target\reports\apidocs\search-page.js = 1732533512386
+C:\Users\sikor\OneDrive\Dokumenty\NetBeansProjects\MyFirstMVP\target\reports\apidocs\search.html = 1732533512342
+C:\Users\sikor\OneDrive\Dokumenty\NetBeansProjects\MyFirstMVP\target\reports\apidocs\search.js = 1732533512371
+C:\Users\sikor\OneDrive\Dokumenty\NetBeansProjects\MyFirstMVP\target\reports\apidocs\serialized-form.html = 1732533512101
+C:\Users\sikor\OneDrive\Dokumenty\NetBeansProjects\MyFirstMVP\target\reports\apidocs\stylesheet.css = 1732533512360
+C:\Users\sikor\OneDrive\Dokumenty\NetBeansProjects\MyFirstMVP\target\reports\apidocs\tag-search-index.js = 1732533512306
+C:\Users\sikor\OneDrive\Dokumenty\NetBeansProjects\MyFirstMVP\target\reports\apidocs\type-search-index.js = 1732533512300

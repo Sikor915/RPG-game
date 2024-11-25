@@ -1,5 +1,7 @@
 package pl.polsl.lab1.kacper.sikorski.myfirstmvp.model;
 
+import lombok.*;
+
 /**
  * The NPC class represents a non-player character in the game. It extends the
  * Entity class, inheriting properties like health, name, and type. NPCs are
@@ -8,6 +10,7 @@ package pl.polsl.lab1.kacper.sikorski.myfirstmvp.model;
  * @author Kacper Sikorski
  * @version 1.0
  */
+@Data
 public class NPC extends Entity {
 
     /**

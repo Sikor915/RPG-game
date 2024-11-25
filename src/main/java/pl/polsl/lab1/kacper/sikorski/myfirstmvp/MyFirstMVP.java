@@ -11,6 +11,7 @@ import pl.polsl.lab1.kacper.sikorski.myfirstmvp.view.GUI;
  * Accessibility options included: - Tooltip guidance for components - Error
  * handling with JOptionPane - Key binding and mnemonic for Confirm button
  *
+ * @author Kacper Sikorski
  * @version 1.0
  */
 public class MyFirstMVP {

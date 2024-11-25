@@ -1,5 +1,11 @@
 package pl.polsl.lab1.kacper.sikorski.myfirstmvp.model;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.EqualsAndHashCode;
+
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -11,35 +17,23 @@ import java.util.Optional;
  * @author Kacper Sikorski
  * @version 1.0
  */
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
 public class Inventory {
 
     /**
-     * A list that holds the items in the inventory
+     * A list that holds the items in the inventory.
      */
-    private ArrayList<Item> items;
-
-    /**
-     * Default constructor for the Inventory class. Initializes the inventory as
-     * an empty list of items.
-     */
-    public Inventory() {
-        items = new ArrayList<>();
-    }
-
-    /**
-     * Retrieves the list of items in the inventory.
-     *
-     * @return The list of items in the inventory
-     */
-    public ArrayList<Item> getItems() {
-        return items;
-    }
+    private ArrayList<Item> items = new ArrayList<>();
 
     /**
      * Adds a new item to the inventory if it isn't already present. Otherwise,
      * increases that item's quantity by added amount.
      *
-     * @param item The item to be added to the inventory
+     * @param item The item to be added to the inventory.
      */
     public void addItem(Item item) {
         boolean itemExists = false;
@@ -56,17 +50,15 @@ public class Inventory {
             }
         }
 
-        if (!itemExists) {
-            if (item.getQuantity() > 0) {
-                items.add(item);
-            }
+        if (!itemExists && item.getQuantity() > 0) {
+            items.add(item);
         }
     }
 
     /**
      * Removes an item from the inventory.
      *
-     * @param item The item to be removed from the inventory
+     * @param item The item to be removed from the inventory.
      */
     public void removeItem(Item item) {
         items.remove(item);
@@ -82,12 +74,10 @@ public class Inventory {
      * found.
      */
     public Item getItemByName(String name) {
-        for (Item i : items) {
-            if (i.getName().equals(name)) {
-                return i;
-            }
-        }
-        return null;
+        return items.stream()
+                .filter(item -> item.getName().equals(name))
+                .findFirst()
+                .orElse(null);
     }
 
     /**
@@ -97,7 +87,6 @@ public class Inventory {
      * @return True if an item was successfully used; false otherwise.
      */
     public boolean useHealingItem(Player player) {
-        // Find a healing item in the inventory
         Optional<Item> healingItem = items.stream()
                 .filter(item -> "Healing Potion".equalsIgnoreCase(item.getName()))
                 .findFirst();

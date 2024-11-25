@@ -1,5 +1,6 @@
 package pl.polsl.lab1.kacper.sikorski.myfirstmvp.model;
 
+import lombok.Getter;
 import java.util.Random;
 import java.util.ArrayList;
 
@@ -10,6 +11,7 @@ import java.util.ArrayList;
  * @author Kacper Sikorski
  * @version 1.0
  */
+@Getter
 public class EnemySpawner {
 
     /**
@@ -30,7 +32,7 @@ public class EnemySpawner {
     /**
      * Random number generator for spawning enemies
      */
-    Random random;
+    private Random random;
 
     /**
      * Constructor for EnemySpawner. Initializes lists of enemy types, health
@@ -64,7 +66,17 @@ public class EnemySpawner {
      */
     public Enemy spawnRandomEnemy() {
         int index = random.nextInt(enemyTypes.size());
-        return new Enemy(healthValues.get(index), enemyTypes.get(index), "Enemy", rewards.get(index));
+
+        // Create a new enemy using only the reward
+        Enemy enemy = new Enemy(rewards.get(index));
+
+        // Optionally set additional fields (health, name, type) if needed, as needed
+        // Set the name, health, and type manually or with other setters
+        enemy.setHealth(healthValues.get(index)); // You would need a setter for health.
+        enemy.setName(enemyTypes.get(index));  // Set the name as the type
+        enemy.setType("Enemy");  // Default type
+
+        return enemy;
     }
 
     /**

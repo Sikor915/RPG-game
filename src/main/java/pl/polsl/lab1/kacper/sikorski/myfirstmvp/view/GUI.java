@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import pl.polsl.lab1.kacper.sikorski.myfirstmvp.controller.GameController;
 import pl.polsl.lab1.kacper.sikorski.myfirstmvp.exceptions.InvalidNameException;
+import lombok.*;
 
 /**
  * The GUI class for the MyFirstMVP application. This class initializes and
@@ -13,6 +14,7 @@ import pl.polsl.lab1.kacper.sikorski.myfirstmvp.exceptions.InvalidNameException;
  * @author Kacper Sikorski
  * @version 1.0
  */
+@Data
 public class GUI {
 
     /**

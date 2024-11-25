@@ -3,7 +3,6 @@ pl\polsl\lab1\kacper\sikorski\myfirstmvp\model\EnemySpawner.class
 pl\polsl\lab1\kacper\sikorski\myfirstmvp\model\Entity.class
 pl\polsl\lab1\kacper\sikorski\myfirstmvp\view\GameWindow.class
 pl\polsl\lab1\kacper\sikorski\myfirstmvp\controller\GameController.class
-pl\polsl\lab1\kacper\sikorski\myfirstmvp\controller\IOController.class
 pl\polsl\lab1\kacper\sikorski\myfirstmvp\view\GUI.class
 pl\polsl\lab1\kacper\sikorski\myfirstmvp\MyFirstMVP.class
 pl\polsl\lab1\kacper\sikorski\myfirstmvp\controller\FightController.class
@@ -14,5 +13,4 @@ pl\polsl\lab1\kacper\sikorski\myfirstmvp\view\GUI$1.class
 pl\polsl\lab1\kacper\sikorski\myfirstmvp\model\NPC.class
 pl\polsl\lab1\kacper\sikorski\myfirstmvp\model\Enemy.class
 pl\polsl\lab1\kacper\sikorski\myfirstmvp\model\Item.class
-pl\polsl\lab1\kacper\sikorski\myfirstmvp\view\WeaponDisplayInfo.class
 pl\polsl\lab1\kacper\sikorski\myfirstmvp\exceptions\InvalidNameException.class

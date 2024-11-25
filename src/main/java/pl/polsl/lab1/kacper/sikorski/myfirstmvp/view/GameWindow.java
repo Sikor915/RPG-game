@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import pl.polsl.lab1.kacper.sikorski.myfirstmvp.controller.GameController;
+import lombok.*;
 
 /**
  * The GameWindow class represents the main game GUI that displays player
@@ -14,6 +15,7 @@ import pl.polsl.lab1.kacper.sikorski.myfirstmvp.controller.GameController;
  * @author Kacper
  * @version 1.0
  */
+@Data
 public class GameWindow extends JFrame {
 
     /**
@@ -22,31 +24,63 @@ public class GameWindow extends JFrame {
     private final GameController gameController;
 
     /**
-     * Labels for displaying player information.
+     * Label that displays player name.
      */
     private JLabel playerNameLabel;
+
+    /**
+     * Label that displays player health.
+     */
     private JLabel playerHealthLabel;
+
+    /**
+     * Label that displays player's weapon.
+     */
     private JLabel playerWeaponLabel;
+
+    /**
+     * label that displays the battle result (Victory/Defeat).
+     */
     private JLabel battleResultLabel;
 
     /**
-     * Labels for displaying enemy information.
+     * Label that displays enemy name.
      */
     private JLabel enemyNameLabel;
+
+    /**
+     * Label that displays enemy health.
+     */
     private JLabel enemyHealthLabel;
 
     /**
-     * Buttons for viewing inventory, starting fights, and exiting the game.
+     * Button that is used to display inventory.
      */
     private JButton viewInventoryButton;
+
+    /**
+     * Button that is used to start the fight.
+     */
     private JButton startFightButton;
+
+    /**
+     * Button that is used to exit the game.
+     */
     private JButton exitGameButton;
 
     /**
-     * Buttons and string to enable user input for attacking and using items.
+     * Button that is used to attack the enemy during fight.
      */
     private JButton attackButton;
+
+    /**
+     * Button that is used to use an item.
+     */
     private JButton useItemButton;
+
+    /**
+     * String that is used to determine player's chosen action.
+     */
     private String playerAction;
 
     /**
@@ -71,8 +105,8 @@ public class GameWindow extends JFrame {
         JPanel playerInfoPanel = new JPanel(new GridLayout(3, 1));
         playerNameLabel = new JLabel("Player Name: " + gameController.getPlayer().getName());
         playerHealthLabel = new JLabel("Health: " + gameController.getPlayer().getHealth());
-        playerWeaponLabel = new JLabel("Weapon: " + gameController.getPlayer().getWeapons().get(0).getName()
-                + ", " + gameController.getPlayer().getWeapons().get(0).getDamage() + " damage.");
+        playerWeaponLabel = new JLabel("Weapon: " + gameController.getPlayer().getWeapons().get(0).name()
+                + ", " + gameController.getPlayer().getWeapons().get(0).damage() + " damage.");
         battleResultLabel = new JLabel(""); // Placeholder for battle results
 
         // Add labels to the player info panel
@@ -98,10 +132,10 @@ public class GameWindow extends JFrame {
         // Create buttons for combat and add tooltips for accessibility
         attackButton = new JButton("Attack");
         useItemButton = new JButton("Use Item");
-        
+
         attackButton.setToolTipText("Attack the enemy {Alt + A)");
         useItemButton.setToolTipText("Use a healing potion (Alt + I)");
-        
+
         attackButton.setMnemonic(KeyEvent.VK_A);
         useItemButton.setMnemonic(KeyEvent.VK_I);
 
@@ -147,8 +181,8 @@ public class GameWindow extends JFrame {
         inventoryDialog.setLayout(new BorderLayout());
 
         // Set up the table model and table
-        DefaultTableModel tableModel = new DefaultTableModel(){
-            public boolean isCellEditable(int row, int column){
+        DefaultTableModel tableModel = new DefaultTableModel() {
+            public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
@@ -166,7 +200,7 @@ public class GameWindow extends JFrame {
         // Add the table to the dialog
         inventoryDialog.add(scrollPane, BorderLayout.CENTER);
         inventoryDialog.setLocationRelativeTo(this);
-        
+
         inventoryDialog.setVisible(true);
     }
 

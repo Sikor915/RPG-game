@@ -1,5 +1,7 @@
 package pl.polsl.lab1.kacper.sikorski.myfirstmvp.exceptions;
 
+import lombok.*;
+
 /**
  * Custom exception class used to handle invalid player names. This exception is
  * thrown when a player name does not meet the validation criteria.
@@ -7,6 +9,7 @@ package pl.polsl.lab1.kacper.sikorski.myfirstmvp.exceptions;
  * @author Kacper Sikorski
  * @version 1.0
  */
+@ToString
 public class InvalidNameException extends Exception {
 
     /**

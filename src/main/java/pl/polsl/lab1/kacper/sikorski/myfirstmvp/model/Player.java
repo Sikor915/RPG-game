@@ -1,5 +1,8 @@
 package pl.polsl.lab1.kacper.sikorski.myfirstmvp.model;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 
 /**
@@ -9,6 +12,9 @@ import java.util.ArrayList;
  * @author Kacper Sikorski
  * @version 1.0
  */
+@Getter
+@Setter
+@NoArgsConstructor
 public class Player extends Entity {
 
     /**
@@ -31,38 +37,21 @@ public class Player extends Entity {
      */
     public Player(int health, String name, String type) {
         super(health, name, type);
+        initializePlayer();
+    }
+
+    /**
+     * Initializes the player's inventory and adds a default weapon and items.
+     */
+    private void initializePlayer() {
         Weapon shortsword = new Weapon("Shortsword", 1, "Melee", 15);
         weapons.add(shortsword);
 
-        Item item = new Item("Healing Potion", 2);
-        playerInventory.addItem(item);
-        Item devItem = new Item("DEV ITEM", 124);
-        playerInventory.addItem(devItem);
-        Item devItem2 = new Item("DEV ITEM2", -124);
-        playerInventory.addItem(devItem2);
-        Item devItem3 = new Item("DEV ITEM3", 124444);
-        playerInventory.addItem(devItem3);
-        Item devItem4 = new Item("DEV ITEM4", 0);
-        playerInventory.addItem(devItem4);
-        Item devItem5 = new Item("DEV ITEM5", 69);
-        playerInventory.addItem(devItem5);
-    }
-
-    /**
-     * Returns the player's inventory.
-     *
-     * @return the inventory of the player
-     */
-    public Inventory getPlayerInventory() {
-        return playerInventory;
-    }
-
-    /**
-     * Returns the list of weapons owned by the player.
-     *
-     * @return the list of weapons
-     */
-    public ArrayList<Weapon> getWeapons() {
-        return weapons;
+        playerInventory.addItem(new Item("Healing Potion", 2));
+        playerInventory.addItem(new Item("DEV ITEM", 124));
+        playerInventory.addItem(new Item("DEV ITEM2", -124));
+        playerInventory.addItem(new Item("DEV ITEM3", 124444));
+        playerInventory.addItem(new Item("DEV ITEM4", 0));
+        playerInventory.addItem(new Item("DEV ITEM5", 69));
     }
 }
