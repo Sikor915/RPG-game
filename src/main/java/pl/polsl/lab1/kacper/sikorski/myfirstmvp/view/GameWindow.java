@@ -95,9 +95,15 @@ public class GameWindow extends JFrame {
         startFightButton = new JButton("Start Fight");
         exitGameButton = new JButton("Exit Game");
 
-        // Create buttons and dialog box for combat
+        // Create buttons for combat and add tooltips for accessibility
         attackButton = new JButton("Attack");
         useItemButton = new JButton("Use Item");
+        
+        attackButton.setToolTipText("Attack the enemy {Alt + A)");
+        useItemButton.setToolTipText("Use a healing potion (Alt + I)");
+        
+        attackButton.setMnemonic(KeyEvent.VK_A);
+        useItemButton.setMnemonic(KeyEvent.VK_I);
 
         // Set actions for the buttons
         viewInventoryButton.addActionListener(e -> showInventoryWindow());
@@ -141,7 +147,11 @@ public class GameWindow extends JFrame {
         inventoryDialog.setLayout(new BorderLayout());
 
         // Set up the table model and table
-        DefaultTableModel tableModel = new DefaultTableModel();
+        DefaultTableModel tableModel = new DefaultTableModel(){
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
         tableModel.addColumn("Item");
         tableModel.addColumn("Quantity");
 
@@ -156,6 +166,7 @@ public class GameWindow extends JFrame {
         // Add the table to the dialog
         inventoryDialog.add(scrollPane, BorderLayout.CENTER);
         inventoryDialog.setLocationRelativeTo(this);
+        
         inventoryDialog.setVisible(true);
     }
 
