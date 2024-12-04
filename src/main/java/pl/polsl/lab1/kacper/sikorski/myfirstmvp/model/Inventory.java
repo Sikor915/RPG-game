@@ -111,4 +111,17 @@ public class Inventory {
 
         return false; // No healing items found
     }
+
+    /**
+     * Adds one or more items to the player's inventory. The method accepts a
+     * variable number of Item objects and adds each one to the inventory.
+     *
+     * @param items The items to be added to the inventory. This can be a single
+     * item or multiple items.
+     */
+    public void addItemsToInventory(Item... items) {
+        for (Item item : items) {
+            addItem(item);
+        }
+    }
 }

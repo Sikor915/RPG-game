@@ -44,14 +44,15 @@ public class Player extends Entity {
      * Initializes the player's inventory and adds a default weapon and items.
      */
     private void initializePlayer() {
-        Weapon shortsword = new Weapon("Shortsword", 1, "Melee", 15);
+        Weapon shortsword = Weapon.builder().name("Shortsword").quantity(1).type(Item.Type.WEAPON).damage(15).build();
         weapons.add(shortsword);
 
-        playerInventory.addItem(new Item("Healing Potion", 2));
-        playerInventory.addItem(new Item("DEV ITEM", 124));
-        playerInventory.addItem(new Item("DEV ITEM2", -124));
-        playerInventory.addItem(new Item("DEV ITEM3", 124444));
-        playerInventory.addItem(new Item("DEV ITEM4", 0));
-        playerInventory.addItem(new Item("DEV ITEM5", 69));
+        playerInventory.addItem(new Item("Healing Potion", 2, Item.Type.POTION));
+        playerInventory.addItem(new Item("DEV ITEM", 124, Item.Type.DEVITEM));
+        playerInventory.addItem(new Item("DEV ITEM2", -124, Item.Type.DEVITEM));
+        playerInventory.addItem(new Item("DEV ITEM3", 124444, Item.Type.DEVITEM));
+        playerInventory.addItem(new Item("DEV ITEM4", 0, Item.Type.DEVITEM));
+        playerInventory.addItem(new Item("DEV ITEM5", 69, Item.Type.DEVITEM));
     }
+
 }

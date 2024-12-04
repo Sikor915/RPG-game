@@ -1,5 +1,7 @@
 package pl.polsl.lab1.kacper.sikorski.myfirstmvp.model;
 
+import lombok.*;
+
 /**
  * Represents a weapon in the game, extending the Item class. This class holds
  * the weapon's damage and type information.
@@ -7,6 +9,30 @@ package pl.polsl.lab1.kacper.sikorski.myfirstmvp.model;
  * @author Kacper Sikorski
  * @version 1.0
  */
-public record Weapon(String name, int quantity, String type, int damage) {
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class Weapon extends Item {
 
+    /**
+     * The damage of the weapon.
+     */
+    private int damage;
+
+    /**
+     * Represents a weapon item in the game, extending the base Item class. This
+     * class adds a damage attribute to the item, allowing it to affect
+     * gameplay.
+     *
+     * @param name The name of the weapon.
+     * @param quantity The quantity of the weapon in the player's inventory.
+     * @param damage The amount of damage the weapon can deal.
+     * @param type The type of the item (which could be WEAPON, ARMOR, etc.)
+     */
+    @Builder
+    public Weapon(String name, int quantity, int damage, Type type) {
+        super(name, quantity, type);
+        this.damage = damage;
+    }
 }

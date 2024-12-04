@@ -27,6 +27,22 @@ public class Item {
     private int quantity;
 
     /**
+     * The type of an item.
+     */
+    private Type type;
+
+    /**
+     * ENUM to represent item types.
+     */
+    public enum Type {
+        WEAPON,
+        POTION,
+        ARMOR,
+        DEVITEM,
+        GOLD
+    }
+
+    /**
      * Adds a specified quantity to the current quantity of the item.
      *
      * @param quantity The amount to be added to the existing quantity.

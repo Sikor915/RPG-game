@@ -43,16 +43,25 @@ public class EnemySpawner {
         enemyTypes.add("Goblin");
         enemyTypes.add("Orc");
         enemyTypes.add("Troll");
+        enemyTypes.add("Kobold");
+        enemyTypes.add("Dragonborn");
+        enemyTypes.add("Human Fighter");
 
         healthValues = new ArrayList<>();
         healthValues.add(50);
         healthValues.add(75);
         healthValues.add(100);
+        healthValues.add(60);
+        healthValues.add(120);
+        healthValues.add(70);
 
         rewards = new ArrayList<>();
         rewards.add(10);
         rewards.add(20);
         rewards.add(30);
+        rewards.add(15);
+        rewards.add(50);
+        rewards.add(-10);
 
         random = new Random();
     }

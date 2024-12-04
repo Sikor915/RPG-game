@@ -10,7 +10,8 @@ import lombok.*;
  * @author Kacper Sikorski
  * @version 1.0
  */
-@Data
+@Getter
+@Setter
 public class NPC extends Entity {
 
     /**

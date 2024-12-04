@@ -15,7 +15,8 @@ import lombok.*;
  * @author Kacper
  * @version 1.0
  */
-@Data
+@Getter
+@Setter
 public class GameWindow extends JFrame {
 
     /**
@@ -105,8 +106,8 @@ public class GameWindow extends JFrame {
         JPanel playerInfoPanel = new JPanel(new GridLayout(3, 1));
         playerNameLabel = new JLabel("Player Name: " + gameController.getPlayer().getName());
         playerHealthLabel = new JLabel("Health: " + gameController.getPlayer().getHealth());
-        playerWeaponLabel = new JLabel("Weapon: " + gameController.getPlayer().getWeapons().get(0).name()
-                + ", " + gameController.getPlayer().getWeapons().get(0).damage() + " damage.");
+        playerWeaponLabel = new JLabel("Weapon: " + gameController.getPlayer().getWeapons().get(0).getName()
+                + ", " + gameController.getPlayer().getWeapons().get(0).getDamage() + " damage.");
         battleResultLabel = new JLabel(""); // Placeholder for battle results
 
         // Add labels to the player info panel
@@ -218,8 +219,20 @@ public class GameWindow extends JFrame {
      * @param health the enemy's health.
      */
     public void updateEnemyInfo(String name, int health) {
-        enemyNameLabel.setText("Enemy Name: " + name);
-        enemyHealthLabel.setText("Enemy Health: " + health);
+        enemyNameLabel.setText("Enemy Name: " + name + " ");
+        enemyHealthLabel.setText("Enemy Health: " + health + " ");
+    }
+
+    /**
+     * Updates the displayed player information
+     *
+     * @param health
+     * @param weaponName
+     * @param weaponDamage
+     */
+    public void updatePlayerInfo(int health, String weaponName, int weaponDamage) {
+        playerHealthLabel.setText("Health: " + health + " ");
+        playerWeaponLabel.setText("Weapon: " + weaponName + ", " + weaponDamage + " damage.");
     }
 
     /**
