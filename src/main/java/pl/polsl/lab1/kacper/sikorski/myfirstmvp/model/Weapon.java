@@ -1,6 +1,7 @@
 package pl.polsl.lab1.kacper.sikorski.myfirstmvp.model;
 
 import lombok.*;
+import java.lang.IllegalArgumentException;
 
 /**
  * Represents a weapon in the game, extending the Item class. This class holds
@@ -30,9 +31,13 @@ public class Weapon extends Item {
      * @param damage The amount of damage the weapon can deal.
      * @param type The type of the item (which could be WEAPON, ARMOR, etc.)
      */
-    @Builder
+    @Builder(builderMethodName = "weaponBuilder")
     public Weapon(String name, int quantity, int damage, Type type) {
         super(name, quantity, type);
-        this.damage = damage;
+        if (damage > 0) {
+            this.damage = damage;
+        } else {
+            throw new IllegalArgumentException("The damage can't be negative!");
+        }
     }
 }

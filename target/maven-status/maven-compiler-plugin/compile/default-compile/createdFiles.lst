@@ -1,3 +1,4 @@
+pl\polsl\lab1\kacper\sikorski\myfirstmvp\exceptions\NoItemInArrayException.class
 pl\polsl\lab1\kacper\sikorski\myfirstmvp\view\GameWindow$1.class
 pl\polsl\lab1\kacper\sikorski\myfirstmvp\model\Armor.class
 pl\polsl\lab1\kacper\sikorski\myfirstmvp\model\Weapon$WeaponBuilder.class
@@ -12,8 +13,10 @@ pl\polsl\lab1\kacper\sikorski\myfirstmvp\model\Item$Type.class
 pl\polsl\lab1\kacper\sikorski\myfirstmvp\model\Weapon.class
 pl\polsl\lab1\kacper\sikorski\myfirstmvp\model\Inventory.class
 pl\polsl\lab1\kacper\sikorski\myfirstmvp\model\Player.class
+pl\polsl\lab1\kacper\sikorski\myfirstmvp\model\Item$ItemBuilder.class
 pl\polsl\lab1\kacper\sikorski\myfirstmvp\view\GUI$1.class
 pl\polsl\lab1\kacper\sikorski\myfirstmvp\model\NPC.class
+pl\polsl\lab1\kacper\sikorski\myfirstmvp\model\Entity$EntityBuilder.class
 pl\polsl\lab1\kacper\sikorski\myfirstmvp\model\Enemy.class
 pl\polsl\lab1\kacper\sikorski\myfirstmvp\model\Item.class
 pl\polsl\lab1\kacper\sikorski\myfirstmvp\model\Armor$ArmorBuilder.class

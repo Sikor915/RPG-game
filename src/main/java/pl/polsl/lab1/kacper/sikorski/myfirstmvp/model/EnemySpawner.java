@@ -3,6 +3,7 @@ package pl.polsl.lab1.kacper.sikorski.myfirstmvp.model;
 import lombok.Getter;
 import java.util.Random;
 import java.util.ArrayList;
+import java.lang.IllegalArgumentException;
 
 /**
  * Class responsible for spawning random enemies. This class generates enemies
@@ -17,17 +18,17 @@ public class EnemySpawner {
     /**
      * ArrayList of enemy types (names) that can be spawned
      */
-    private static ArrayList<String> enemyTypes;
+    private ArrayList<String> enemyTypes;
 
     /**
      * Corresponding health values for the enemy types
      */
-    private static ArrayList<Integer> healthValues;
+    private ArrayList<Integer> healthValues;
 
     /**
      * Corresponding reward values (in gold) for defeating the enemy types
      */
-    private static ArrayList<Integer> rewards;
+    private ArrayList<Integer> rewards;
 
     /**
      * Random number generator for spawning enemies
@@ -74,18 +75,23 @@ public class EnemySpawner {
      * @return A new Enemy object with random attributes.
      */
     public Enemy spawnRandomEnemy() {
-        int index = random.nextInt(enemyTypes.size());
+        try {
+            int index = random.nextInt(enemyTypes.size());
 
-        // Create a new enemy using only the reward
-        Enemy enemy = new Enemy(rewards.get(index));
+            // Create a new enemy using only the reward
+            Enemy enemy = new Enemy(rewards.get(index));
 
-        // Optionally set additional fields (health, name, type) if needed, as needed
-        // Set the name, health, and type manually or with other setters
-        enemy.setHealth(healthValues.get(index)); // You would need a setter for health.
-        enemy.setName(enemyTypes.get(index));  // Set the name as the type
-        enemy.setType("Enemy");  // Default type
+            // Optionally set additional fields (health, name, type) if needed, as needed
+            // Set the name, health, and type manually or with other setters
+            enemy.setHealth(healthValues.get(index)); // You would need a setter for health.
+            enemy.setName(enemyTypes.get(index));  // Set the name as the type
+            enemy.setType("Enemy");  // Default type
 
-        return enemy;
+            return enemy;
+        } catch (IllegalArgumentException ex) {
+
+        }
+        return null;
     }
 
     /**
@@ -96,8 +102,13 @@ public class EnemySpawner {
      * @param reward The reward given for defeating the new enemy type.
      */
     public void addEnemyType(String name, int health, int reward) {
-        enemyTypes.add(name);
-        healthValues.add(health);
-        rewards.add(reward);
+        if (health > 0) {
+            enemyTypes.add(name);
+            healthValues.add(health);
+            rewards.add(reward);
+        } else {
+            throw new IllegalArgumentException("Health cannot be negative!");
+        }
+
     }
 }

@@ -44,15 +44,63 @@ public class Player extends Entity {
      * Initializes the player's inventory and adds a default weapon and items.
      */
     private void initializePlayer() {
-        Weapon shortsword = Weapon.builder().name("Shortsword").quantity(1).type(Item.Type.WEAPON).damage(15).build();
+        Weapon shortsword = Weapon.weaponBuilder().name("Shortsword").quantity(1).type(Item.Type.WEAPON).damage(15).build();
         weapons.add(shortsword);
+        try {
+            playerInventory.addItem(Item.builder()
+                    .name("Healing Potion")
+                    .quantity(2)
+                    .type(Item.Type.POTION)
+                    .build());
+        } catch (IllegalArgumentException ex) {
 
-        playerInventory.addItem(new Item("Healing Potion", 2, Item.Type.POTION));
-        playerInventory.addItem(new Item("DEV ITEM", 124, Item.Type.DEVITEM));
-        playerInventory.addItem(new Item("DEV ITEM2", -124, Item.Type.DEVITEM));
-        playerInventory.addItem(new Item("DEV ITEM3", 124444, Item.Type.DEVITEM));
-        playerInventory.addItem(new Item("DEV ITEM4", 0, Item.Type.DEVITEM));
-        playerInventory.addItem(new Item("DEV ITEM5", 69, Item.Type.DEVITEM));
+        }
+        try {
+            playerInventory.addItem(Item.builder()
+                    .name("DEV ITEM")
+                    .quantity(124)
+                    .type(Item.Type.DEVITEM)
+                    .build());
+        } catch (IllegalArgumentException ex) {
+
+        }
+        try {
+            playerInventory.addItem(Item.builder()
+                    .name("DEV ITEM2")
+                    .quantity(-124)
+                    .type(Item.Type.DEVITEM)
+                    .build());
+        } catch (IllegalArgumentException ex) {
+
+        }
+        try {
+            playerInventory.addItem(Item.builder()
+                    .name("DEV ITEM3")
+                    .quantity(124444)
+                    .type(Item.Type.DEVITEM)
+                    .build());
+        } catch (IllegalArgumentException ex) {
+
+        }
+        try {
+            playerInventory.addItem(Item.builder()
+                    .name("DEV ITEM4")
+                    .quantity(0)
+                    .type(Item.Type.DEVITEM)
+                    .build());
+        } catch (IllegalArgumentException ex) {
+
+        }
+        try {
+            playerInventory.addItem(Item.builder()
+                    .name("DEV ITEM5")
+                    .quantity(69)
+                    .type(Item.Type.DEVITEM)
+                    .build());
+        } catch (IllegalArgumentException ex) {
+
+        }
+
     }
 
 }

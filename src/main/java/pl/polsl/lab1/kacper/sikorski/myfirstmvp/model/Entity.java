@@ -15,7 +15,6 @@ import lombok.experimental.NonFinal;
  */
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 @NonFinal
 public class Entity {
@@ -28,10 +27,22 @@ public class Entity {
     /**
      * The name of the entity.
      */
-    private String name = "";
+    private String name = "Default";
 
     /**
      * The type of the entity (e.g., player, enemy, NPC).
      */
-    private String type = "";
+    private String type = "Default";
+    
+    @Builder
+    public Entity(int health, String name, String type){
+        if (health <= 0 || "".equals(name) || name == null || "".equals(type) || type == null ) {
+            throw new IllegalArgumentException("Invalid health/name/type");
+        }
+        else{
+            this.health = health;
+            this.name = name;
+            this.type = type;
+        }
+    }
 }

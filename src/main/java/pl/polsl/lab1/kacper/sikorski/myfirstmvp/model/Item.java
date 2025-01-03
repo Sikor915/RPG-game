@@ -1,6 +1,7 @@
 package pl.polsl.lab1.kacper.sikorski.myfirstmvp.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,7 +14,6 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Item {
 
     /**
@@ -40,6 +40,20 @@ public class Item {
         ARMOR,
         DEVITEM,
         GOLD
+    }
+
+    @Builder
+    public Item(String name, int quantity, Type type) {
+        if (quantity <= 0) {
+            throw new IllegalArgumentException("Quantity must be greater than zero.");
+        }
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be null or empty.");
+        }
+        this.name = name;
+        this.quantity = quantity;
+        this.type = type;
+
     }
 
     /**

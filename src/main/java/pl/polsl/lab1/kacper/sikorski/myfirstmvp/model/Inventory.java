@@ -9,6 +9,8 @@ import lombok.EqualsAndHashCode;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import pl.polsl.lab1.kacper.sikorski.myfirstmvp.exceptions.NoItemInArrayException;
+
 /**
  * The Inventory class represents the player's collection of items in the game.
  * It provides functionality to add, remove, and retrieve items from the
@@ -44,7 +46,11 @@ public class Inventory {
                 if (i.getQuantity() > 0) {
                     itemExists = true;
                 } else {
-                    removeItem(i);
+                    try {
+                        removeItem(i);
+                    } catch (NoItemInArrayException ex) {
+
+                    }
                 }
                 break;
             }
@@ -60,8 +66,22 @@ public class Inventory {
      *
      * @param item The item to be removed from the inventory.
      */
-    public void removeItem(Item item) {
-        items.remove(item);
+    public void removeItem(Item item) throws NoItemInArrayException {
+
+        /*try {
+            if (items.contains(item)) {
+                items.remove(item);
+            } else {
+                throw new NoItemInArrayException("The item doesn't exist!");
+            }
+        } catch (NoItemInArrayException ex) {
+            
+        }*/
+        if (items.contains(item)) {
+            items.remove(item);
+        } else {
+            throw new NoItemInArrayException("The item doesn't exist!");
+        }
     }
 
     /**
