@@ -7,11 +7,14 @@ import org.junit.jupiter.params.provider.CsvSource;
 /**
  * Tests for the EnemySpawner class.
  *
- * @author sikor
+ * @author Kacper Sikorski
  * @version 1.0
  */
 public class EnemySpawnerTest {
 
+    /**
+     * Tests the `spawnRandomEnemy` method to ensure it returns a valid enemy.
+     */
     @ParameterizedTest
     @CsvSource({
         "Dark Elf, 80, 40"
@@ -31,6 +34,13 @@ public class EnemySpawnerTest {
                 "Enemy reward should match one of the predefined rewards.");
     }
 
+    /**
+     * Tests the `addEnemyType` method to ensure it adds a new enemy correctly.
+     *
+     * @param name   The name of the enemy to add.
+     * @param health The health value of the new enemy.
+     * @param reward The reward value of the new enemy.
+     */
     @ParameterizedTest
     @CsvSource({
         "Dark Elf, 80, 40",
@@ -39,6 +49,7 @@ public class EnemySpawnerTest {
     void testAddEnemyType(String name, int health, int reward) {
         // GIVEN
         EnemySpawner enemySpawner = new EnemySpawner();
+
         // WHEN
         enemySpawner.addEnemyType(name, health, reward);
 
@@ -51,6 +62,13 @@ public class EnemySpawnerTest {
                 "New enemy reward should be added to the list.");
     }
 
+    /**
+     * Tests the `addEnemyType` method with invalid health input.
+     *
+     * @param name   The name of the enemy to add.
+     * @param health The health value of the new enemy (invalid).
+     * @param reward The reward value of the new enemy.
+     */
     @ParameterizedTest
     @CsvSource({
         "Dark Elf, -10, 40"
@@ -65,6 +83,13 @@ public class EnemySpawnerTest {
         }, "Adding an enemy with negative health should throw an exception.");
     }
 
+    /**
+     * Tests that a newly added enemy type can eventually spawn.
+     *
+     * @param name   The name of the newly added enemy.
+     * @param health The health value of the new enemy.
+     * @param reward The reward value of the new enemy.
+     */
     @ParameterizedTest
     @CsvSource({
         "Dark Elf, 80, 40"
@@ -92,6 +117,9 @@ public class EnemySpawnerTest {
         assertTrue(found, "The newly added enemy should eventually spawn.");
     }
 
+    /**
+     * Tests the behavior of the `spawnRandomEnemy` method when the enemy list is empty.
+     */
     @ParameterizedTest
     @CsvSource({
         "Dark Elf, 80, 40"
@@ -99,7 +127,7 @@ public class EnemySpawnerTest {
     void testSpawnEnemyWithEmptyEnemyList() {
         // GIVEN
         EnemySpawner enemySpawner = new EnemySpawner();
-        enemySpawner.getEnemyTypes().clear();
+        enemySpawner.getEnemyTypes().clear(); // Clear all enemy types to simulate an empty list.
 
         // WHEN
         Enemy enemy = enemySpawner.spawnRandomEnemy();
@@ -107,5 +135,4 @@ public class EnemySpawnerTest {
         // THEN
         assertNull(enemy, "No enemy should be spawned when the enemy list is empty.");
     }
-
 }
