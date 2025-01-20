@@ -16,6 +16,12 @@ public class InventoryTest {
 
     /**
      * Tests adding multiple items to the inventory.
+     * @param name1 Name of first item
+     * @param quantity1 Quantity of first item
+     * @param type1 Type of first item
+     * @param name2 Name of second item
+     * @param quantity2 Quantity of second item
+     * @param type2 Type of second item
      */
     @ParameterizedTest
     @CsvSource({
@@ -47,6 +53,9 @@ public class InventoryTest {
 
     /**
      * Tests using a healing item from the inventory.
+     * @param name Name of the item
+     * @param quantity Quantity of the item
+     * @param type Type of the item
      */
     @ParameterizedTest
     @CsvSource({
@@ -72,6 +81,9 @@ public class InventoryTest {
 
     /**
      * Tests removing an item from the inventory.
+     * @param name Name of the item
+     * @param quantity Quantity of the item
+     * @param type Type of the item
      */
     @ParameterizedTest
     @CsvSource({
@@ -100,6 +112,9 @@ public class InventoryTest {
 
     /**
      * Tests retrieving an item by its name.
+     * @param name Name of the item
+     * @param quantity Quantity of the item
+     * @param type Type of the item
      */
     @ParameterizedTest
     @CsvSource({
@@ -126,6 +141,9 @@ public class InventoryTest {
 
     /**
      * Tests removing an item that does not exist in the inventory.
+     * @param name Name of the item
+     * @param quantity Quantity of the item
+     * @param type Type of the item
      */
     @ParameterizedTest
     @CsvSource({
@@ -148,6 +166,9 @@ public class InventoryTest {
 
     /**
      * Tests adding an item with a non-positive quantity.
+     * @param name Name of the item
+     * @param quantity Quantity of the item
+     * @param type Type of the item
      */
     @ParameterizedTest
     @CsvSource({
@@ -177,6 +198,12 @@ public class InventoryTest {
 
     /**
      * Tests adding an item with zero quantity and verifies proper behavior.
+     * @param name1 Name of first item
+     * @param quantity1 Quantity of first item
+     * @param type1 Type of first item
+     * @param name2 Name of second item
+     * @param quantity2 Quantity of second item
+     * @param type2 Type of second item
      */
     @ParameterizedTest
     @CsvSource({
